@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git "https://github.com/ruhi14547/my_first_repo.git"
+            }
+        }
+        stage('Build'){
+            steps{
+                bat 'javac jen1.java' 
+            }
+        }
+        stage('execute'){
+            steps{
+                bat 'java jen1' 
+            }
+        } 
+    }
+}
