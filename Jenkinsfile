@@ -9,14 +9,13 @@ pipeline{
     }
     stage('publish'){
       steps{
-        publishHtml({
+        publishHtm([
           allowmissing:true,
           alwaysLinkedtoBuild:false,
-          reportDir:',',
+          reportDir:'.',
             reportFiles:'firsthtml.html',
             reportName:'MY Html pipe Published'
-        }
-       )
+       ])
       }
     }
   }
