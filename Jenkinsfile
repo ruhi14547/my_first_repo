@@ -1,23 +1,16 @@
-
 pipeline{
   agent any
-  Stages{
-    stage('checkout'){
-      steps{
-        git 'https://github.com/ruhi14547/my_first_repo.git'
+    stages{
+      stage('Checkout'){
+        steps{
+          git 'https://github.com/ruhi14547/my_first_repo.git'
+        }
       }
-    }
-    stage('publish'){
-      steps{
-        publishHtm([
-          allowmissing:true,
-          alwaysLinkedtoBuild:false,
-          reportDir:'.',
-            reportFiles:'firsthtml.html',
-            reportName:'MY Html pipe Published'
-       ])
-      }
-    }
-  }
+      stage('Publish'){
+        steps{
+          publishHTML([allowMissing:true, alwaysLinkToLastBuild:false, keepAll:false, reportDir:'.', reportFiles:'firsthtml.html', reportName:'ABC'])
+
 }
-      
+}
+}
+}
