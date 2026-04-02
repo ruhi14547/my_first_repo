@@ -1,0 +1,27 @@
+pipeline{
+  agent any
+  stages{
+    stage('checkout'){
+      steps{
+        
+      }
+    }
+    stage('buils Image'){
+      steps{
+        bat 'docker build -t mywebsite .'
+      }
+    }
+    stage('stop old containers'){
+      steps(
+        bat 'docker stop mycount || exit 0'
+        bat 'docker rm mycount || exit 0'
+        }
+        }
+
+        stage('Run Image - COntainerize')
+        {
+          steps{
+            bat 'docker run -d -p 7000:80 --name mycount mywebsite'
+          }
+        }
+        }
